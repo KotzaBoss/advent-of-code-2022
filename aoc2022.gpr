@@ -5,7 +5,11 @@ project AOC2022 is
    for Main use ("day_1.adb", "day_2.adb");
 
    package Compiler is
-      for Switches ("Ada") use ("-gnat2020");
+      for Switches ("Ada") use (
+                                "-gnat2020",
+                                "-g",
+                                "-gnatwa"
+                               );
    end Compiler;
 
 end AOC2022;
