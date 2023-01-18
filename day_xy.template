@@ -1,0 +1,25 @@
+with Ada.Text_IO; use Ada.Text_IO;
+
+with GNAT.AWK;
+
+procedure Day_XY is
+
+   ------------------------------
+   -- Processing
+   ------------------------------
+
+   package AWK renames GNAT.AWK;
+
+   procedure Action (Quit : in out Boolean) is
+      pragma Unreferenced (Quit);
+
+      Line : constant String := AWK.Field(0);
+   begin
+     Put_Line (Line);
+   end Action;
+
+   procedure For_Every_Line is new AWK.For_Every_Line_Current_Session (Action);
+begin
+    For_Every_Line (Separators => AWK.Use_Current,
+                    Filename => "input/day_XY.txt");
+end Day_XY;
